@@ -118,3 +118,48 @@ def draw_bullets(bullets):
     for bullet in bullets:
         pygame.draw.rect(screen, RED, bullet)
 
+def draw_spheres(spheres):
+    for sphere in spheres:
+        img = sphere[2]
+        screen.blit(pygame.transform.scale(img, (40, 40)), (sphere[0] - 20, sphere[1] - 20))
+
+
+def draw_power_ups():
+    for power_up in power_ups:
+        pygame.draw.circle(screen, GREEN, (power_up[0], power_up[1]), 10)
+
+
+def draw_damage(x, y):
+    img = random.choice(damage_images)
+    screen.blit(pygame.transform.scale(img, (40, 40)), (x, y))
+
+
+def draw_hud():
+    lives_text = font.render(f"Lives: {lives}", True, WHITE)
+    level_text = font.render(f"Level: {level}", True, WHITE)
+    score_text = font.render(f"Score: {score}", True, WHITE)
+    shield_text = font.render("SHIELD ACTIVE", True, GREEN) if shield_active else None
+    screen.blit(lives_text, (WIDTH - 100, 10))
+    screen.blit(score_text, (300, 10))
+    screen.blit(level_text, (10, 10))
+    if shield_text:
+        screen.blit(shield_text, (WIDTH // 2 - shield_text.get_width() // 2, 10))
+
+
+def spawn_sphere():
+    if random.randint(1, 60 - level * 5) == 1:
+        x = random.randint(20, WIDTH - 20)
+        img = random.choice(enemy_images)
+        spheres.append([x, 0, img])
+
+
+def spawn_power_up():
+    if random.randint(1, 300) == 1:
+        x = random.randint(20, WIDTH - 20)
+        power_ups.append([x, 0])
+
+
+def activate_shield():
+    global shield_active, shield_timer
+    shield_active = True
+    shield_timer = pygame.time.get_ticks()
