@@ -120,20 +120,18 @@ This will launch the game window where you can start playing.
 - **Level Up**: The level increases when your score reaches 100 times the current level. For example, at level 1, you need 100 points to reach level 2, and at level 2, you need 200 points to reach level 3, and so on.
 
 
-### Screenshot and Gameplay
+## Screenshot and Gameplay
 **Here is a screenshot of the game**:
 ![Screenshot 2024-12-06 042915](https://github.com/user-attachments/assets/77b683d0-721f-489b-8420-6eb237283f2d)
 
-**Here is the gameplay**:
-https://github.com/user-attachments/assets/ce211377-0cb9-49e5-9009-8fb17f172355
 
-### Power-ups and Shield:
+## Power-ups and Shield:
 
 - **Power-ups**: Occasionally, a power-up will appear on the screen. If the cannon collides with the power-up, it activates a shield.
 - **Shield**: The shield protects you from one enemy hit for 5 seconds. When the shield is active, a "SHIELD ACTIVE" text will appear on the screen.
 
 
-### Tips for Contributing
+## Tips for Contributing
 
 - If you'd like to contribute to the game (e.g., adding new features, fixing bugs), feel free to fork the repository and create a pull request.
 - Ensure that any changes are well-tested and documented.
