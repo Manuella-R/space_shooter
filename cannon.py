@@ -163,3 +163,92 @@ def activate_shield():
     global shield_active, shield_timer
     shield_active = True
     shield_timer = pygame.time.get_ticks()
+
+# Game Logic
+intro_screen()
+choose_model()
+
+cannon_x, cannon_y = WIDTH // 2 - 25, HEIGHT - 100
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_p:  # Pause/Resume toggle
+            paused = not paused
+
+    if paused:
+        pause_text = font.render("PAUSED", True, RED)
+        screen.blit(pause_text, (WIDTH // 2 - pause_text.get_width() // 2, HEIGHT // 2))
+        pygame.display.flip()
+        clock.tick(10)
+        continue
+
+    draw_background()
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and cannon_x > 0:
+        cannon_x -= cannon_speed
+    if keys[pygame.K_RIGHT] and cannon_x < WIDTH - 50:
+        cannon_x += cannon_speed
+    if keys[pygame.K_SPACE]:  # Space bar for shooting
+        current_time = pygame.time.get_ticks()
+        if current_time - last_shot_time > cooldown_duration:
+            shoot_sound.play()
+            bullets.append(pygame.Rect(cannon_x + 25, cannon_y, 5, 10))
+            last_shot_time = current_time
+
+    # Move bullets
+    for bullet in bullets[:]:
+        bullet.y += bullet_speed
+        if bullet.y < 0:
+            bullets.remove(bullet)
+
+    # Spawn and move spheres
+    spawn_sphere()
+    spawn_power_up()
+    for sphere in spheres[:]:
+        sphere[1] += sphere_speed
+        if sphere[1] > HEIGHT:
+            spheres.remove(sphere)
+            if not shield_active:
+                lives -= 1
+        for bullet in bullets[:]:
+            if sphere[0] - 20 < bullet.x < sphere[0] + 20 and sphere[1] - 20 < bullet.y < sphere[1] + 20:
+                explosion_sound.play()
+                draw_damage(sphere[0] - 20, sphere[1] - 20)
+                spheres.remove(sphere)
+                bullets.remove(bullet)
+                score += 10
+
+    # Move and collect power-ups
+    for power_up in power_ups[:]:
+        power_up[1] += 2
+        if cannon_x - 20 < power_up[0] < cannon_x + 70 and cannon_y - 20 < power_up[1] < cannon_y + 50:
+            activate_shield()
+            power_ups.remove(power_up)
+
+    if score >= 100 * level:  # Increase level more quickly by lowering the score required
+        level += 1
+        print(f"Level Up! Now on Level {level}")
+
+    # Handle shield expiration
+    if shield_active and pygame.time.get_ticks() - shield_timer > 5000:  # Shield lasts 5 seconds
+        shield_active = False
+
+    if lives <= 0:
+        game_over_text = font.render("GAME OVER", True, RED)
+        screen.blit(game_over_text, (WIDTH // 2 - game_over_text.get_width() // 2, HEIGHT // 2))
+        pygame.display.flip()
+        pygame.time.wait(2000)
+        break
+
+    draw_cannon(cannon_x, cannon_y)
+    draw_bullets(bullets)
+    draw_spheres(spheres)
+    draw_power_ups()
+    draw_hud()
+
+    pygame.display.flip()
+    clock.tick(60)
