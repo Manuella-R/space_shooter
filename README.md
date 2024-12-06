@@ -124,7 +124,6 @@ This will launch the game window where you can start playing.
 - **Power-ups**: Occasionally, a power-up will appear on the screen. If the cannon collides with the power-up, it activates a shield.
 - **Shield**: The shield protects you from one enemy hit for 5 seconds. When the shield is active, a "SHIELD ACTIVE" text will appear on the screen.
 
---
 
 ### Tips for Contributing
 
