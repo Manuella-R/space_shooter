@@ -52,7 +52,7 @@ cd cannon-shooter-game
     ├── background/
     ├── shot.wav
     ├── grenade.wav
-    ├── cannon_shooter_game.py (or the main game file)
+    ├── cannon_shooter_game.py
     └── README.md
     ```
 
@@ -60,7 +60,7 @@ cd cannon-shooter-game
     - The **enemies/** folder should contain images of enemy spheres.
     - The **damage/** folder should contain images for the explosion effects when enemies are destroyed.
     - The **background/** folder should contain images for random backgrounds.
-    - Ensure that `shot.wav` and `grenade.wav` sound files are in the game folder.
+
 
 2. **Set up images and sounds**: If you don’t have the assets already, you can create or download suitable images and sounds. Place them in their respective folders.
 
