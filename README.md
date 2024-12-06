@@ -77,6 +77,8 @@ python cannon_shooter_game.py
 
 This will launch the game window where you can start playing.
 
+Alternatively, under the Code section in the repository, download the zipped folder containing the project files and run it on preferred IDE
+
 ## Game Controls
 
 - **Arrow Keys**: Move the cannon left and right.
