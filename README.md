@@ -122,7 +122,7 @@ This will launch the game window where you can start playing.
 
 ### Screenshot and Gameplay
 **Here is a screenshot of the game**:
-https://github.com/user-attachments/assets/77b683d0-721f-489b-8420-6eb237283f2d
+![Screenshot 2024-12-06 042915](https://github.com/user-attachments/assets/77b683d0-721f-489b-8420-6eb237283f2d)
 
 **Here is the gameplay**:
 https://github.com/user-attachments/assets/ce211377-0cb9-49e5-9009-8fb17f172355
