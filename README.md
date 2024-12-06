@@ -124,17 +124,11 @@ This will launch the game window where you can start playing.
 - **Power-ups**: Occasionally, a power-up will appear on the screen. If the cannon collides with the power-up, it activates a shield.
 - **Shield**: The shield protects you from one enemy hit for 5 seconds. When the shield is active, a "SHIELD ACTIVE" text will appear on the screen.
 
-## License
-
-This game is released under the MIT License. You can freely use, modify, and distribute the code with proper attribution.
-
----
+--
 
 ### Tips for Contributing
 
 - If you'd like to contribute to the game (e.g., adding new features, fixing bugs), feel free to fork the repository and create a pull request.
 - Ensure that any changes are well-tested and documented.
 
----
 
-This version of the README includes detailed instructions on setting up, running, and understanding the game!
